@@ -3,7 +3,7 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|username|string|null: false, index: true, unique: true|
+|name|string|null: false, index: true, unique: true|
 |email|string|null: false|
 |password|string|null: false|
 ### Association
@@ -14,8 +14,7 @@
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|groupname|string|null: false, unique: true||
-|username|string|null: false|
+|name|string|null: false, unique: true|
 ### Association
 - has_many :messages
 - has_many :users_groups
@@ -34,7 +33,7 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
