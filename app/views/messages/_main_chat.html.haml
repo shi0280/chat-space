@@ -1,0 +1,32 @@
+-# メイン
+.chat-main
+  .header-r
+    .header-r__group
+      %h3.header-r__group__name test 
+      .header-r__group__lists
+        %p.header-r__group__text Member :
+        %ul.header-r__group__members
+          %li.header-r__group__member shi
+          %li.header-r__group__member shi
+    
+    = link_to "#", class:"header-r__edit-btn " do
+      Edit
+
+  .chat
+    .chat__items
+      %p.chat__items__name shi
+      %p.chat__items__date 2020/6/15(Mon) 22:33
+    %p.chat__message お疲れさまです！
+    .chat__items
+      %p.chat__items__name shi
+      %p.chat__items__date 2020/6/15(Mon) 22:33
+    %p.chat__message お疲れさまです！
+      
+  .message
+    %form.message-form
+      .form-box
+        %input{type: "text", class: "form-box__message", placeholder: "type a message"}
+        %label{class: "form-box__image"}
+          =icon('fas', 'image')
+          %input{type: "file", class: "form-box__icon"}
+      %input{type: "submit", class: "send-btn", value: "Send"}

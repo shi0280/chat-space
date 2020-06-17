@@ -1,0 +1,19 @@
+-# サイドバー
+.side-bar
+  .header-l
+    .header-l__items
+      %p.header-l__items__name shi
+      %ul.header-l__items__icons
+        %li.header-l__items__icon
+        = link_to "#" do
+          = icon('fas', 'edit')
+        %li.header-l__items__icon
+        = link_to "#" do
+          = icon('fas', 'cog')
+  .groups
+    = link_to "#", class: "groups__items" do
+      %p.groups__items__name techcamp
+      %p.groups__items__message まだメッセージはありません。
+    = link_to "#", class: "groups__items" do
+      %p.groups__items__name techcamp
+      %p.groups__items__message まだメッセージはありません。
