@@ -2,31 +2,31 @@
 .chat-main
   .header-r
     .header-r__group
-      %h3.header-r__group__name test 
+      %h3.header-r__group__name
+        = @group.name
       .header-r__group__lists
         %p.header-r__group__text Member :
-        %ul.header-r__group__members
-          %li.header-r__group__member shi
-          %li.header-r__group__member shi
-    
-    = link_to "#", class:"header-r__edit-btn " do
-      Edit
+        .header-r__group__members
+          -@group.users.each do |user|
+            .header-r__group__member
+              = user.name
+    = link_to edit_group_path(@group.id) do
+      %p.header-r__edit-btn Edit
 
   .chat
-    .chat__items
-      %p.chat__items__name shi
-      %p.chat__items__date 2020/6/15(Mon) 22:33
-    %p.chat__message お疲れさまです！
-    .chat__items
-      %p.chat__items__name shi
-      %p.chat__items__date 2020/6/15(Mon) 22:33
-    %p.chat__message お疲れさまです！
+    = render @messages
+    -# ※以下のコードを省略した書き方。
+    -# インスタンス変数の名前を単数形にしたものと、部分テンプレートの名前が同じであれば省略可能。
+    -# = render partial: 'message', collection: @messages
+    -# ※以下のような書き方もできるが、処理スピードが遅いため使用しない（上のようにcollectionを使用）。
+    -# - @messages.each do |message|
+    -#   = render partial: "message", locals: { message: message }
       
   .message
-    %form.message-form
+    = form_with model: [@group, @message], html: {class: "message-form"}, local: true do |f|
       .form-box
-        %input{type: "text", class: "form-box__message", placeholder: "type a message"}
-        %label{class: "form-box__image"}
-          =icon('fas', 'image')
-          %input{type: "file", class: "form-box__icon"}
-      %input{type: "submit", class: "send-btn", value: "Send"}
+        = f.text_field :content, class: 'form-box__message', placeholder: "type a message"
+        = f.label :image, class: "form-box__image" do
+          = icon('fas', 'image')
+          = f.file_field :image, class: "form-box__icon"
+      = f.submit "Send", class: "send-btn"
