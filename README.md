@@ -40,5 +40,3 @@
 ### Association
 - belongs_to :user
 - belongs_to :group
-
-https://i.gyazo.com/f3596baf139592ec390c92479758684f.gif
